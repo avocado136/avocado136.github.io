@@ -43,7 +43,7 @@ author:
 comments:
   provider: "disqus"
   disqus:
-    shortname: "pwills-com"
+    shortname: "avocado136"
 
 analytics:
   provider: "google"
