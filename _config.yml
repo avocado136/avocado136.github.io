@@ -1,10 +1,10 @@
 # Configs for pwills.com
 
-title: "home"
+title: "Home page"
 name: "huukim"
 email: huukim136@gmail.com
 url: "https://avocado136.github.io/"
-repository: "peterewills/peterewills.github.io"
+repository: "avocado136/avocado136.github.io"
 
 include:
   - _pages
