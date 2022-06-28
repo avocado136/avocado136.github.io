@@ -23,7 +23,8 @@ plugins:
 
 # Build settings
 markdown: kramdown
-theme: minimal-mistakes-jekyll
+# theme: minimal-mistakes-jekyll
+theme: jekyll-theme-time-machine
 remote_theme: "mmistakes/minimal-mistakes"
 minimal_mistakes_skin: "dirt"
   
