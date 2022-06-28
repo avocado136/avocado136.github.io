@@ -41,9 +41,11 @@ author:
 
 # # comments by disqus
 comments:
+  layout: default
+  comments: true
   provider: "disqus"
   disqus:
-    shortname: "avocado136"
+    shortname: "avocado136.github.io"
 
 analytics:
   provider: "google"
