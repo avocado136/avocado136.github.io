@@ -17,7 +17,7 @@ figcaption {
 # Fourier Transform Overview
 In another post, [betterexplained](https://betterexplained.com/articles/an-interactive-guide-to-the-fourier-transform/) starts explaining Fourier Transform through the scope of a refreshing smoothie. Particularly, say we have a smoothie, now the question is, are we able to identify how much milk, the amount of water, how much veggies in that smoothie?
 
-That problem statement is an excellent example of the motivation of Fourier Transform. The smoothie here is your signal $$x(t)$$ which consists of a bunch of frequency components (milk, water, veggies, .etc). Fourier Transform is an extremely powerful tool that helps us decompose signals in the time domain[^fnote1] into multiple frequency components and from that we can analyze how each frequency contributes to the overall signal. Additionally, oftentimes there exists problems that are very difficult to solve in the time domain but become trivial in the frequency domain (or the other way around). That's why we need Fourier Transform as a tool to view the signals in different domains. 
+That problem statement is an excellent example of the motivation of Fourier Transform. The smoothie here is your signal $$x(t)$$ which consists of a bunch of frequency components (milk, water, veggies, .etc). Fourier Transform is an extremely powerful tool that helps us decompose signals in the time domain[^fnote1] into multiple frequency components from which we can analyze how each frequency contributes to the overall signal. Additionally, oftentimes there exists problems that are very difficult to solve in the time domain but become trivial in the frequency domain (or the other way around). That's why we need Fourier Transform as a tool to view the signals in different domains. 
 
 Mathematically, Fourier Transform is defined as
 
@@ -55,7 +55,7 @@ $$
 \end{equation}
 $$
 
-where $$\delta$$ is an impulse function and $$ш(t)$$ implies a _dirac comb_ with unit period ($$period = 1$$).
+where $$\delta(t)$$ is an impulse function and $$ш(t)$$ implies a _dirac comb_ with unit period ($$period = 1$$).
 
 Besides, _dirac comb_ function also has an interesting property that its Fourier Transform is another _dirac comb_ in the frequency domain with the period being the multiplicative inverse of its counterpart in the time domain.
 
@@ -84,7 +84,7 @@ width="50%" hspace="1" align="left">
 
 At this point, it is encouraged to keep in mind the 2 mantras that are the building blocks for everything that comes later
 
-* Fourier Transform of a _dirac comb_ is also a _dirac comb_ $$\mathcal{F}\{\frac{1}{T}ш(\frac{t}{T})\} = {\frac{1}{F}ш(\frac{t}{F})}$$
+* Fourier Transform of a _dirac comb_ is also a _dirac comb_ $$\mathcal{F}\{\frac{1}{T}ш(\frac{t}{T})\} = {\frac{1}{F}ш(\frac{t}{F})}$$ for $$T=\frac{1}{F}$$
 
 * **Convolution** in _time domain_ $$<=>$$ **multiplication** in the _frequency domain_ and vice versa
 
