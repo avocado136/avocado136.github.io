@@ -15,9 +15,14 @@ figcaption {
 } -->
 
 # Fourier Transform Overview
-In another post, [betterexplained](https://betterexplained.com/articles/an-interactive-guide-to-the-fourier-transform/) starts explaining Fourier Transform through the scope of a refreshing smoothie. Particularly, say we have a smoothie, now the question is, are we able to identify how much milk, the amount of water, how much veggies in that smoothie?
+Have you ever tried to identify the ingredients in a delicious smoothie? It can be tough to tell how much milk, water, or veggies are in there, right? Well, imagine that smoothie is actually a signal, and we need to break it down into its individual components. That's where the Fourier Transform comes in. It's a powerful tool that helps us decompose signals in the time domain into multiple frequency components. In other words, it can help us identify how each ingredient contributes to the overall taste of the smoothie.
 
-That problem statement is an excellent example of the motivation of Fourier Transform. The smoothie here is your signal $$x(t)$$ which consists of a bunch of frequency components (milk, water, veggies, .etc). Fourier Transform is an extremely powerful tool that helps us decompose signals in the time domain[^fnote1] into multiple frequency components from which we can analyze how each frequency contributes to the overall signal. Additionally, oftentimes there exists problems that are very difficult to solve in the time domain but become trivial in the frequency domain (or the other way around). That's why we need Fourier Transform as a tool to view the signals in different domains. 
+The Fourier Transform is not only useful for analyzing signals, but it's also helpful for solving difficult problems that might be impossible to solve in the time domain alone. By viewing signals in different domains, we can gain insights and solve problems that might have otherwise been out of reach.
+
+Mathematically, the Fourier Transform involves taking a signal in the time domain[^fnote1] and transforming it into the frequency domain. This transformation reveals the various frequencies present in the signal, allowing us to better understand and analyze it. The Fourier Transform is widely used in fields such as audio and image processing, communications, and medical imaging, to name just a few.
+
+By understanding the Fourier Transform, we can gain insights into the complex signals that surround us and use this knowledge to solve problems and create innovative solutions.
+
 
 Mathematically, Fourier Transform is defined as
 
@@ -40,12 +45,22 @@ $$
 \end{equation}
 $$
 
-Looks scary but equation \eqref{eq:inverse} (called forward Fourier Transform) just simply states that given a continuous function $$x(t)$$ in the time domain, applying the math, we get the frequency information $$X(f)$$ and vice versa in equation \eqref{eq:forward} (called inverse Fourier Transform).
+<!-- Looks scary but equation \eqref{eq:inverse} (called forward Fourier Transform) just simply states that given a continuous function $$x(t)$$ in the time domain, applying the math, we get the frequency information $$X(f)$$ and vice versa in equation \eqref{eq:forward} (called inverse Fourier Transform). -->
 
-However, the expressions above are just the generalized cases representing Fourier Transform at a very high level. To take a closer look, there are multiple variants of Fourier Transform: Fourier Series, Discrete-time Fourier Series, Discrete-time Fourier Transform, Discrete Fourier Transform, .etc. Each comes with different math equations and it’s frustrating to remember all of them. Therefore, this post will provide you with an intuitive, logical way to understand what’s going on under the hood without having to remember all the math regardless of whatever variant it is. We’ll dive into the concepts of Fourier Transform under the light of **_SAMPLING_**. Yes, **_SAMPLING_**’s gonna be the key to unlocking your in-depth understanding of Fourier Transform. 
+The mathematical definition of the Fourier Transform can look quite intimidating at first glance, but it's actually quite simple. Equation \eqref{eq:inverse}, known as the forward Fourier Transform, shows that by applying some math to a continuous function $$x(t)$$ in the time domain, we can obtain the frequency information $$X(f)$$. Equation \eqref{eq:forward}, known as the inverse Fourier Transform, does the opposite: it takes frequency information and converts it back into the time domain.
+
+<!-- However, the expressions above are just the generalized cases representing Fourier Transform at a very high level. To take a closer look, there are multiple variants of Fourier Transform: Fourier Series, Discrete-time Fourier Series, Discrete-time Fourier Transform, Discrete Fourier Transform, .etc. Each comes with different math equations and it’s frustrating to remember all of them. Therefore, this post will provide you with an intuitive, logical way to understand what’s going on under the hood without having to remember all the math regardless of whatever variant it is. We’ll dive into the concepts of Fourier Transform under the light of **_SAMPLING_**. Yes, **_SAMPLING_**’s gonna be the key to unlocking your in-depth understanding of Fourier Transform.  -->
+
+While these equations are the generalized cases, there are actually several variants of the Fourier Transform, including Fourier Series, Discrete-time Fourier Series, Discrete-time Fourier Transform, and Discrete Fourier Transform. Each variant has its own set of equations, making it challenging to remember them all. That's why this post will provide an intuitive, logical way to understand the Fourier Transform without having to remember every equation.
+
+One way to understand the Fourier Transform is through the concept of sampling. Imagine you have a signal that varies over time, such as a sound wave. To analyze this signal, you can sample it at regular intervals and record the amplitude of the signal at each sample point. This creates a discrete representation of the original signal, which can be transformed into the frequency domain using the Fourier Transform.
+
+By using sampling, we can break down a signal into its component frequencies and analyze each one separately. This is useful for a wide range of applications, from audio processing to image compression. In the next section, we'll explore this concept in more detail and provide some examples to help you understand how the Fourier Transform works in practice.
 
 # Sampling
-First, let’s start with the _dirac comb_ function (can also be called _shah function_, _impulse train_) — an essential function in sampling. _Dirac comb_ is a periodic function with periodicity $$T$$ having the formula
+<!-- First, let’s start with the _dirac comb_ function (can also be called _shah function_, _impulse train_) — an essential function in sampling. _Dirac comb_ is a periodic function with periodicity $$T$$ having the formula -->
+
+To better understand how the Fourier Transform works, we'll start with the _dirac comb_ function (can also be called _shah function_, _impulse train_), which is an essential concept in sampling. The _Dirac comb_ is a periodic function with a period of $$T$$, defined as follows:
 
 $$
 \begin{equation}
@@ -55,9 +70,13 @@ $$
 \end{equation}
 $$
 
-where $$\delta(t)$$ is an impulse function and $$ш(t)$$ implies a _dirac comb_ with unit period ($$period = 1$$).
+<!-- where $$\delta(t)$$ is an impulse function and $$ш(t)$$ implies a _dirac comb_ with unit period ($$period = 1$$). -->
 
-Besides, _dirac comb_ function also has an interesting property that its Fourier Transform is another _dirac comb_ in the frequency domain with the period being the multiplicative inverse of its counterpart in the time domain.
+In this formula, $$\delta(t)$$ is the impulse function, and $$ш(t)$$ denotes a _dirac comb_ with a unit period. The _dirac comb_ function is important in sampling because it allows us to convert a continuous signal into a discrete signal by sampling it at regular intervals.
+
+<!-- Besides, _dirac comb_ function also has an interesting property that its Fourier Transform is another _dirac comb_ in the frequency domain with the period being the multiplicative inverse of its counterpart in the time domain. -->
+
+One interesting property of the _dirac comb_ function is that its Fourier Transform is another _dirac comb_, but with a period that is the multiplicative inverse of its counterpart in the time domain. This means that if the _dirac comb_ has a period of $$T$$ in the time domain, its Fourier Transform will have a period of $$1/T$$ in the frequency domain.
 
 <figure>
 <img src="{{ "/assets/images/comb2.png" | absolute_url }}"
@@ -65,9 +84,11 @@ width="100%" hspace="1" align="left">
 <figcaption>Fig.1 - Dirac comb in time domain (left) and its Fourier Transform (right). The scarcer it is in time the denser it is in frequency and vice versa.</figcaption>
 </figure>
 
-We all know that our computers cannot handle continuous data, so for them to understand, natural continuous-time signals need to be reduced to discrete-time signals. Specifically, the values of a continuous-time signal are extracted periodically at many points in time to form a sequence of discrete-time equally spaced values representing the original signals.
+<!-- We all know that our computers cannot handle continuous data, so for them to understand, natural continuous-time signals need to be reduced to discrete-time signals. Specifically, the values of a continuous-time signal are extracted periodically at many points in time to form a sequence of discrete-time equally spaced values representing the original signals. -->
 
-Mathematically, sampling is the process of multiplicating continuous-time signal with _dirac comb_:
+Sampling is a crucial process for converting continuous-time signals into discrete-time signals that can be processed by computers. In simple terms, sampling involves extracting values from a continuous-time signal at regular intervals to create a sequence of discrete-time values that represent the original signal.
+
+To perform sampling, we use the _dirac comb_ function to multiply the continuous-time signal. This creates a series of impulses at regular intervals, which we can then use to extract discrete-time values from the signal. Mathematically, this can be represented as follows:
 
 $$
 \begin{equation}
@@ -88,10 +109,12 @@ At this point, it is encouraged to keep in mind the 2 mantras that are the build
 
 * **Convolution** in _time domain_ $$<=>$$ **multiplication** in the _frequency domain_ and vice versa
 
-So far, we have collected all the powerful weapons. Now we're ready to go smash all kinds of Fourier Transforms down one by one.
+<!-- So far, we have collected all the powerful weapons. Now we're ready to go smash all kinds of Fourier Transforms down one by one. -->
+By keeping these principles in mind, we can gain a deeper understanding of the Fourier transform and its many variants, which we'll explore in the upcoming sections.
 
 # Fourier Series
-Consider a finite continuous signal $$x(t)$$, and $$x_T(t)$$ is the periodic extension of $$x(t)$$ with period $$T$$.
+<!-- Consider a finite continuous signal $$x(t)$$, and $$x_T(t)$$ is the periodic extension of $$x(t)$$ with period $$T$$. -->
+In this section, we will dive into the Fourier Series and its properties. Consider a finite continuous signal $$x(t)$$ and its periodic extension $$x_T(t)$$ with a period $$T$$. The question arises, what does the Fourier transform of a periodic signal look like? Is it also periodic and continuous in the frequency domain? Can we grasp these concepts intuitively without delving into the math?
 
 <figure>
 <img src="{{ "/assets/images/periodicsignal.png" | absolute_url }}"
@@ -99,9 +122,10 @@ width="50%" hspace="1" align="left">
 <figcaption>Fig.3 - Finite continuous signal (left) and periodic continuous signal (right). </figcaption>
 </figure>
     
-So the question is what does the Fourier transform of periodic $$x_T(t)$$ look like? Is it also periodic? Is it continuous in the frequency domain? Can we intuitively know all these without googling for the math?
+<!-- So the question is what does the Fourier transform of periodic $$x_T(t)$$ look like? Is it also periodic? Is it continuous in the frequency domain? Can we intuitively know all these without googling for the math? -->
 
-It may not seem informative when we look at the signal $$x_T(t)$$ only. But what about decomposing into small units? You may notice that $$x_T(t)$$ is just the convolution of $$x(t)$$ and _dirac comb_ $$\frac{1}{T}ш(\frac{t}{T})$$.
+<!-- It may not seem informative when we look at the signal $$x_T(t)$$ only. But what about decomposing into small units? You may notice that $$x_T(t)$$ is just the convolution of $$x(t)$$ and _dirac comb_ $$\frac{1}{T}ш(\frac{t}{T})$$. -->
+While it may not be immediately informative to look at the signal $$x_T(t)$$ alone, we can gain a deeper understanding by breaking it down into smaller units. It's worth noting that $$x_T(t)$$ is just the convolution of $$x(t)$$ and the dirac comb function $$\frac{1}{T}ш(\frac{t}{T})$$.
 
 <!-- $$x_T(t)=\frac{1}{T}ш(\frac{t}{T})*x(t)$$ -->
 
@@ -112,7 +136,9 @@ $$
 \end{equation}
 $$
 
-Remember the two important properties discussed above? Fourier Transform of a _dirac comb_ is also a _dirac comb_ and _time-domain_ convolution is equivalent to _frequency-domain_ multiplication. Bringing them all to the frequency domain, we get
+<!-- Remember the two important properties discussed above? Fourier Transform of a _dirac comb_ is also a _dirac comb_ and _time-domain_ convolution is equivalent to _frequency-domain_ multiplication. Bringing them all to the frequency domain, we get -->
+
+Remember the two important properties discussed earlier: Fourier Transform of a _dirac comb_ is also a _dirac comb_, and convolution in the _time domain_ is equivalent to multiplication in the _frequency domain_. Applying these properties to the frequency domain, we obtain 
 
 <!-- $$X [f] = \frac{1}{F}ш(\frac{t}{F})X(f)$$ -->
 
@@ -125,7 +151,8 @@ $$
 
 where $$\mathcal{F}\{x_T(t)\} = X[f]$$ and $$\mathcal{F}\{x(t)\} = X(f) $$. 
 
-It turns out that this is exactly the form of sampling (equation \eqref{eq:sampling}). The only difference is that **_signal is now sampled in the frequency domain_** instead of the time domain.
+<!-- It turns out that this is exactly the form of sampling (equation \eqref{eq:sampling}). The only difference is that **_signal is now sampled in the frequency domain_** instead of the time domain. -->
+It turns out that this is exactly the form of sampling (equation \eqref{eq:sampling}). The only difference is that signal is now sampled in the frequency domain instead of the time domain.
 
 <figure>
 <img src="{{ "/assets/images/fs.png" | absolute_url }}"
@@ -133,9 +160,11 @@ width="60%" hspace="1" align="left">
 <figcaption>Fig.4 - Fourier Transform of continuous periodic signal. </figcaption>
 </figure>
 
-Until now, the big picture should be crystal clear. Fourier Transform of a continuous periodic signal $$x_T(t)$$ is a discrete sequence that is the sampling of $$X(f)$$ at rate $$F=\frac{1}{T}$$ in the frequency domain.
+<!-- Until now, the big picture should be crystal clear. Fourier Transform of a continuous periodic signal $$x_T(t)$$ is a discrete sequence that is the sampling of $$X(f)$$ at rate $$F=\frac{1}{T}$$ in the frequency domain. -->
 
-On the other hand, periodic $$x_T(t)$$ can be written in the form of Fourier Series that represents a periodic function as the sum of sine and cosine waves 
+The big picture is that Fourier Transform of a continuous periodic signal $$x_T(t)$$ is a discrete sequence that is the sampling of $$X(f)$$ at rate $$F=\frac{1}{T}$$ in the frequency domain. $$x_T(t)$$ can be written as the sum of sine and cosine waves using Fourier Series.
+
+<!-- On the other hand, periodic $$x_T(t)$$ can be written in the form of Fourier Series that represents a periodic function as the sum of sine and cosine waves  -->
 
 $$
 \begin{equation}
@@ -153,7 +182,8 @@ $$
 
 where $$c_{n}$$ is called Fourier Transform coefficient representing the height of the corresponding frequency component, $$\omega_{0} = 2 \pi f_{0}$$ and $$f_{0}$$ is the _fundamental frequency_  $$f_{0} = \frac{1}{T}$$.
 
-Expressing periodic signals in the form of Fourier Series matters because complex exponentials are the eigenfunctions of the Linear Time-Invariant (LTI) system so they bring a lot of convenience for calculations. This is another whole concept to expand on but a bit off the scope of this post. Feel free to go down this rabbit hole by yourself if you’re interested.
+<!-- Expressing periodic signals in the form of Fourier Series matters because complex exponentials are the eigenfunctions of the Linear Time-Invariant (LTI) system so they bring a lot of convenience for calculations. This is another whole concept to expand on but a bit off the scope of this post. Feel free to go down this rabbit hole by yourself if you’re interested. -->
+Expressing periodic signals in the form of Fourier Series using complex exponentials is useful for calculations because complex exponentials are the eigenfunctions of the Linear Time-Invariant (LTI) system. However, this concept goes beyond the scope of this post.
 
 # Discrete-Time Fourier Series
 The title says it all. This time, we consider a periodic discrete-time signal (whereas previously it’s periodic continuous-time). We have a finite discrete function $$x[t]$$, and $$x_T[t]$$ is the periodic extension of $$x[t]$$ with period $$T$$.
