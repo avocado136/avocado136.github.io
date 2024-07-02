@@ -5,21 +5,11 @@ date: 2024-07-01
 excerpt: "Discover how Daniel Kahneman's 'Tom W's specialty' problem reveals common decision-making pitfalls and learn how Bayes' Theorem can guide more rational choices."
 comments: true
 ---
-<!-- 
-figcaption {
-  background-color: black;
-  color: white;
-  font-style: italic;
-  padding: 2px;
-  text-align: center;
-} -->
-
 
 In his book Thinking, Fast and Slow, Nobel Prize-winning author Daniel Kahneman discusses the "Tom W's specialty" problem, highlighting a common pitfall in human decision-making and judgment. This problem is closely related to Bayes' Theorem in statistics. In this blog post, I will explore how the mathematical concept of Bayes' Theorem can be applied to decision-making.
 
 # Tom W’s specialty
 The problem is illustrated through three small tasks. Let's tackle them one by one.
-
 **Task 1**
 Tom W is a graduate student at University X. Please rank the following fields in descending order of likelihood that Tom W is studying in that field:
 - Business Administration
@@ -27,6 +17,7 @@ Tom W is a graduate student at University X. Please rank the following fields in
 - Engineering
 - Humanities and Education
 - Social Science and Social Work
+
 In this task, where no additional information about Tom W is provided, it is rational to base the decision on the proportion of students enrolled in each field. The larger the proportion, the higher the likelihood that Tom W is enrolled in that field. These proportions are known as base rates.
 
 **Task 2**
@@ -46,18 +37,12 @@ The critical part that most people (possibly including you) overlook is the base
 
 Interestingly, even participants with a background in statistics often fail to make the correct decision. This is a common pitfall in thinking where base rates are completely ignored.
 
-
 # Tom W’s specialty under mathematical perspective
 In this section, let’s mathematically formalize the Tom W’s specialty problem using Bayesian Theorem.
-<!-- P(A∣B)=P(A)⋅P(B∣A)P(B)P(A|B) = \frac{P(A) \cdot P(B|A)}{P(B)}P(A∣B)=P(B)P(A)⋅P(B∣A)
-
-where:
-
-- P(A∣B)P(A|B)P(A∣B): Posterior, the probability of A given B -->
 $$
 \begin{equation}
     P(A∣B)=\frac{P(A).P(B∣A)}{P(B)}
-    \label{eq:1} \tag{1}
+    % \label{eq:1} 
 \end{equation}
 $$
 where:
@@ -78,7 +63,7 @@ In Task 3, participants needed to determine the probability of $$A$$ given $$B$$
 $$
 \begin{equation}
     P(A∣B)=\frac{P(A).P(B∣A)}{P(B)}
-    \label{eq:2} \tag{2}
+    % \label{eq:2} \tag{2}
 \end{equation}
 $$
 
@@ -119,7 +104,7 @@ The probability that she has a PhD given that she reads the New York Times on th
 $$
 \begin{equation}
     P(A∣B)=\frac{P(A).P(B∣A)}{P(B)}
-    \label{eq:3} \tag{3}
+    % \label{eq:3} \tag{3}
 \end{equation}
 $$
 
