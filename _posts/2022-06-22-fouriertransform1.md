@@ -1,5 +1,6 @@
 ---
-title:  "Fourier Transform Through The Concept of Sampling (1)"
+# title:  "Fourier Transform Through The Concept of Sampling (1)"
+title:  "Fourier Transform Through The Concept of Sampling"
 category: posts
 date: 2022-06-22
 excerpt: "Explaining all kinds of Fourier Transfrom using sampling method."
