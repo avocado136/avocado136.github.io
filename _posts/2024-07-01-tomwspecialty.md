@@ -90,7 +90,7 @@ Throughout human evolution, we have always sought ways to accomplish tasks with 
 
 However, there are instances where representativeness can mislead us and drive us to make wrong decisions. Here are the two sins of representativeness that we should be aware of.
 
-### Representativeness exaggerates rare events
+## 1. Representativeness exaggerates rare events
 Consider an example from the book. If you see a woman reading the New York Times on a New York subway, which of the following is more likely?
 
 - She has a PhD.
@@ -115,7 +115,7 @@ Representativeness, $$P(B∣A)$$, tells us that a PhD is more likely to read the
 
 This example demonstrates that our intuition, influenced by representativeness $$P(B∣A)$$, can sometimes wrongly exaggerate rare events $$P(A)$$, leading us astray.
 
-### Representativeness Makes Us Ignore the Faithfulness of Evidence
+## 2. Representativeness Makes Us Ignore the Faithfulness of Evidence
 Returning to Bayes' Theorem, the denominator $$P(B)$$ represents how informative or unique the evidence is. It directly influences $$P(A∣B)$$ because if the evidence $$P(B)$$ is highly informative (small $$P(B)$$), it increases the weight of $$P(A∣B)$$, and vice versa.
 
 In Tom W’s specialty problem, $$P(B)$$ reflects how reliable the description of Tom W is. Although $$P(B)$$ might be uncertain or the portrayal of Tom W might not be accurate, our System 1—the intuitive part of our brain—often assumes it to be true and ignores this factor. The best approach in the Tom W’s specialty problem is to stay close to the base rates $$P(A)$$ when we’re unsure about the evidence. We can then make slight adjustments based on our beliefs about $$P(B∣A)$$, but ensure these adjustments do not stray too far from the base rate $$P(A)$$.
