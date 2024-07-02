@@ -2,7 +2,7 @@
 title:  "Intuition vs. Rationality: Insights from Tom W’s Specialty and Bayesian Analysis"
 category: posts
 date: 2024-07-01
-excerpt: "Discover how Daniel Kahneman's "Tom W's specialty" problem reveals common decision-making pitfalls and learn how Bayes' Theorem can guide more rational choices."
+excerpt: "Discover how Daniel Kahneman's 'Tom W's specialty' problem reveals common decision-making pitfalls and learn how Bayes' Theorem can guide more rational choices."
 comments: true
 ---
 <!-- 
