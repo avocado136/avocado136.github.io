@@ -5,6 +5,15 @@ date: 2022-07-01
 excerpt: "Discover how Daniel Kahneman's "Tom W's specialty" problem reveals common decision-making pitfalls and learn how Bayes' Theorem can guide more rational choices."
 comments: true
 ---
+<!-- 
+figcaption {
+  background-color: black;
+  color: white;
+  font-style: italic;
+  padding: 2px;
+  text-align: center;
+} -->
+
 
 In his book Thinking, Fast and Slow, Nobel Prize-winning author Daniel Kahneman discusses the "Tom W's specialty" problem, highlighting a common pitfall in human decision-making and judgment. This problem is closely related to Bayes' Theorem in statistics. In this blog post, I will explore how the mathematical concept of Bayes' Theorem can be applied to decision-making.
 
