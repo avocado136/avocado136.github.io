@@ -38,13 +38,15 @@ The critical part that most people (possibly including you) overlook is the base
 Interestingly, even participants with a background in statistics often fail to make the correct decision. This is a common pitfall in thinking where base rates are completely ignored.
 
 # Tom W’s specialty under mathematical perspective
-In this section, let’s mathematically formalize the Tom W’s specialty problem using Bayesian Theorem.
+In this section, let’s mathematically formalize the Tom W’s specialty problem using Bayes' Theorem
+
 $$
 \begin{equation}
     P(A∣B)=\frac{P(A).P(B∣A)}{P(B)}
     % \label{eq:1} 
 \end{equation}
 $$
+
 where:
 - $$P(A∣B)$$: Posterior, the probability of $$A$$ given $$B$$
 - $$P(A)$$: Prior, the probability of $$A$$ without any evidence
@@ -60,6 +62,7 @@ In Task 1, where no additional information about Tom W was given, the probabilit
 In Task 2, with the additional description of Tom W, participants were asked to assess the likelihood that a random student matches the description given that the student is from the Computer Science department, denoted as $$P(B∣A)$$.
 
 In Task 3, participants needed to determine the probability of $$A$$ given $$B$$, denoted as $$P(A∣B)$$. This should be calculated using Bayes' Theorem:
+
 $$
 \begin{equation}
     P(A∣B)=\frac{P(A).P(B∣A)}{P(B)}
@@ -87,7 +90,7 @@ Throughout human evolution, we have always sought ways to accomplish tasks with 
 
 However, there are instances where representativeness can mislead us and drive us to make wrong decisions. Here are the two sins of representativeness that we should be aware of.
 
-## Representativeness exaggerates rare events
+### Representativeness exaggerates rare events
 Consider an example from the book. If you see a woman reading the New York Times on a New York subway, which of the following is more likely?
 
 - She has a PhD.
@@ -112,7 +115,7 @@ Representativeness, $$P(B∣A)$$, tells us that a PhD is more likely to read the
 
 This example demonstrates that our intuition, influenced by representativeness $$P(B∣A)$$, can sometimes wrongly exaggerate rare events $$P(A)$$, leading us astray.
 
-## Representativeness Makes Us Ignore the Faithfulness of Evidence
+### Representativeness Makes Us Ignore the Faithfulness of Evidence
 Returning to Bayes' Theorem, the denominator $$P(B)$$ represents how informative or unique the evidence is. It directly influences $$P(A∣B)$$ because if the evidence $$P(B)$$ is highly informative (small $$P(B)$$), it increases the weight of $$P(A∣B)$$, and vice versa.
 
 In Tom W’s specialty problem, $$P(B)$$ reflects how reliable the description of Tom W is. Although $$P(B)$$ might be uncertain or the portrayal of Tom W might not be accurate, our System 1—the intuitive part of our brain—often assumes it to be true and ignores this factor. The best approach in the Tom W’s specialty problem is to stay close to the base rates $$P(A)$$ when we’re unsure about the evidence. We can then make slight adjustments based on our beliefs about $$P(B∣A)$$, but ensure these adjustments do not stray too far from the base rate $$P(A)$$.
