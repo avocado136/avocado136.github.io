@@ -11,7 +11,7 @@ permalink: /about/
 <!-- <img src="{{ "/assets/images/routeburn.jpg" | absolute_url }}"
 width="50%" hspace="20" align="right"> -->
 
-I am a dedicated data scientist with a expertise in machine learning, deep learning, and speech and audio signal processing. My current work revolves around leveraging cutting-edge techniques in machine learning and deep learning to tackle challenging problems in speech synthesis and voice conversion, and transforming them into products that are both beautiful and functional.
+I am a dedicated data scientist with an expertise in machine learning, deep learning, and speech and audio signal processing. My current work revolves around leveraging cutting-edge techniques in machine learning and deep learning to tackle challenging problems in speech synthesis and voice conversion, and transforming them into products that are both beautiful and functional.
 
 <!-- My ultimate goal is to use my skills and knowledge to make machines smarter and more capable, while also helping to empower and elevate humanity as a whole. -->
 
