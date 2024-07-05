@@ -76,7 +76,7 @@ Let me explain why this intuitive thinking is flawed and why $$P(A∣B)$$ is dif
 
 <figure style="display: block; margin-left: auto; margin-right: auto;">
 <img src="{{ "/assets/images/Distracted-Boyfriend.jpeg" | absolute_url }}"
-style="width:60%;"
+style="width:30%;">
 </figure>
 
 # Predicting from Representativeness
