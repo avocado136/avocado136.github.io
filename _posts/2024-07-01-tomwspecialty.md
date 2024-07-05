@@ -74,10 +74,17 @@ The mistake people often make is ignoring the base rates $$P(A)$$ and relying so
 
 Let me explain why this intuitive thinking is flawed and why $$P(A∣B)$$ is different from $$P(B∣A)$$. Even if $$P(B∣A)$$ is very high (meaning the description of Tom W fits the stereotypical image of a Computer Science student perfectly), if the proportion of Computer Science students among all students is low ($$P(A)$$ is small), the product $$P(A)⋅P(B∣A)$$ might not be high. This means that Tom W is not as likely to be a Computer Science student as one might initially think.
 
-<figure style="display: block; margin-left: auto; margin-right: auto;">
+<!-- <figure style="display: block; margin-left: auto; margin-right: auto;">
 <img src="{{ "/assets/images/Distracted-Boyfriend.jpeg" | absolute_url }}"
 style="width:30%;">
+</figure> -->
+
+<figure>
+<img src="{{ "/assets/images/Distracted-Boyfriend.jpeg" | absolute_url }}"
+style="width:30%;"
+hspace="1" align="center">
 </figure>
+
 
 # Predicting from Representativeness
 By now, I hope you understand the common mistake people make in decision-making when they ignore base rates and rely solely on $$P(B∣A)$$. The author of the book refers to $$P(B∣A)$$ as representativeness. Predicting based on representativeness alone can lead to poor decisions. Here are some everyday examples of predictions based on representativeness, as highlighted in the book:
