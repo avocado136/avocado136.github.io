@@ -76,7 +76,7 @@ Let me explain why this intuitive thinking is flawed and why $$P(A∣B)$$ is dif
 
 <figure>
 <img src="{{ "/assets/images/Distracted-Boyfriend.jpeg" | absolute_url }}"
-width="60%" hspace="1" align="left">
+width="30%" hspace="1" align="left">
 <!-- <figcaption>Fig.5 - Finite discrete signal (left) and periodic discrete signal (right). </figcaption> -->
 </figure>
 
