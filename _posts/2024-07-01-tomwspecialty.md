@@ -6,7 +6,7 @@ excerpt: "Discover how Daniel Kahneman's 'Tom W's specialty' problem reveals com
 comments: true
 ---
 
-In his book Thinking, Fast and Slow, Nobel Prize-winning author Daniel Kahneman discusses the "Tom W's specialty" problem, highlighting a common pitfall in human decision-making and judgment. This problem is closely related to Bayes' Theorem in statistics. In this blog post, I will explore how the mathematical concept of Bayes' Theorem can be applied to decision-making.
+In his book *Thinking, Fast and Slow*, Nobel Prize-winning author Daniel Kahneman discusses the "Tom W's specialty" problem, highlighting a common pitfall in human decision-making and judgment. This problem is closely related to Bayes' Theorem in statistics. In this blog post, I will explore how the mathematical concept of Bayes' Theorem can be applied to decision-making.
 
 # Tom W’s specialty
 The problem is illustrated through three small tasks. Let's tackle them one by one.
@@ -138,7 +138,7 @@ Returning to Bayes' Theorem, the denominator $$P(B)$$ represents how informative
 In Tom W’s specialty problem, $$P(B)$$ reflects how reliable the description of Tom W is. Although $$P(B)$$ might be uncertain or the portrayal of Tom W might not be accurate, our System 1—the intuitive part of our brain—often assumes it to be true and ignores this factor. The best approach in the Tom W’s specialty problem is to stay close to the base rates $$P(A)$$ when we’re unsure about the evidence. We can then make slight adjustments based on our beliefs about $$P(B∣A)$$, but ensure these adjustments do not stray too far from the base rate $$P(A)$$.
 
 # Conclusion
-The Tom W’s specialty problem, as presented in *Thinking, Fast and Slow*, vividly illustrates the pitfalls of relying solely on representativeness in decision-making. By dissecting this problem through the lens of Bayesian Theorem, we gain a deeper understanding of how our intuitive judgments can lead us astray when we ignore base rates and the reliability of evidence.
+The Tom W’s specialty problem, as presented in *Thinking, Fast and Slow*, vividly illustrates the pitfalls of relying solely on representativeness in decision-making. By dissecting this problem through the lens of Bayes' Theorem, we gain a deeper understanding of how our intuitive judgments can lead us astray when we ignore base rates and the reliability of evidence.
 
 In our daily lives, it's easy to fall into the trap of making decisions based on how well something fits a stereotype or an intuitive pattern. While this can often lead to quick and efficient judgments, it can also result in significant errors, especially when dealing with rare events or uncertain evidence.
 
