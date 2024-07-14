@@ -40,6 +40,7 @@ Unlike a regular probability distribution, a probability density path is time-de
 $$p_0$$ (the distribution at $$t=0$$) is a simple distribution, such as a Gaussian, while $$p_1$$ (the distribution at $$t=1$$) represents the dataset distribution we aim to model.
 
 **Vector Field (v):**
+
 $$[0,1] \times \mathbb{R}^d \rightarrow \mathbb{R}^d$$
 
 This constructs a flow $$\phi$$ defined by the Ordinary Differential Equation (ODE)
@@ -66,6 +67,7 @@ width="60%" hspace="1" align="left">
 Now, let $$x_1$$ denote a random variable distributed according to the approximate data distribution $$p_1$$, with $$p_0$$ being a simple distribution like a Gaussian. As mentioned, $$v_t$$ determines the probability path and the flow. If we know $$v_t$$, we can transform $$p_0$$ into $$p_1$$. In other words, knowing $$v_t$$ allows us to model the data distribution $$p_1$$.
 
 The Flow Matching objective is:
+
 <!-- L(θ) = E_{t,pt(x)} ||vt(x) - ut(x) || ^ 2  -->
 $$L_FM(\theta) = E_{t, p_t(x)} ||v_t(x) - u_t(x)||^2$$
 
@@ -96,6 +98,7 @@ Similarly, we can represent the probability path by marginalizing over the condi
 $$p_t(x) = \int p_t(x \mid x_1)q(x_1) \, dx_1$$
 
 We can also define the vector field $$v_t$$ by marginalizing over the conditional vector fields:
+
 $$p_t(x) = \int u_t(x \mid x_1)\frac{p_t(x \mid x_1) q(x_1)}{p_t(x)} \, dx_1$$
 
 This implies that while we don’t have a closed form for $$v_t$$, we can approximate it by aggregating all the conditional vector fields $$v_t(. \mid x_1)$$ according to all the datapoints.
@@ -107,14 +110,16 @@ width="60%" hspace="1" align="left">
 </figure>
 
 So now we have the objective of CFM
+
 $$L_{CFM}(\theta) = E_{t, q(x_1), p_t(x \mid x_1)} \{v_t(x) - u_t(x \mid x_1)\}$$
 <!-- where t ∼ U[0, 1], x1 ∼ q(x1), and now x ∼ pt(x|x1). -->
+
 where $$t \sim U[0, 1]$, $$x_1 \sim q(x_1)$$, and now $$x \sim p_t(x \mid x_1)$$.
 
 Unlike the FM objective, the CFM objective is tractable. We can sample from $$p_t(x \mid x_1)$$ and compute $$u_t(x \mid x_1)$$, both of which can be easily done as they are defined on a per-sample basis. So now we’re ready to train a CFM model with this objective, right? Well, not quite! If you notice, $$p_t(x \mid x_1)$$ only specifies a probability path that somehow flows from $$p_0$$ to the dataset distribution. However, there are countless possible paths that can flow from $$p_0$$ to $$p_1$$. Consequently, there are also countless possible vector fields. So among these infinite paths, which one should we use in practice? Let's dive into the next part to figure it out.
 
 <figure>
-<img src="{{ "/assets/images/multipath.jpg" | absolute_url }}"
+<img src="{{ "/assets/images/multiplepath.jpg" | absolute_url }}"
 width="60%" hspace="1" align="left">
 <figcaption>Many paths that can flow p0 to p1 </figcaption>
 </figure>
