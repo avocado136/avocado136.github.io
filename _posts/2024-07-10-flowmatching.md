@@ -21,7 +21,7 @@ width="60%" hspace="1" align="left">
 <figure>
 <img src="{{ "/assets/images/reverse_diff.png" | absolute_url }}"
 width="60%" hspace="1" align="left">
-<figcaption style="text-align: center;">Diffusion process</figcaption></figure>
+<figcaption style="text-align: center;"> Diffusion process</figcaption></figure>
 
 In the forward diffusion process, noise is incrementally added to a data point over multiple steps. If enough steps are taken, the data point eventually transforms into complete noise. Conversely, the reverse diffusion process systematically denoises the noisy data point in multiple steps, reconstructing the original input.
 
@@ -45,6 +45,7 @@ $$[0,1] \times \mathbb{R}^d \rightarrow \mathbb{R}^d$$
 This constructs a flow $$\phi$$ defined by the Ordinary Differential Equation (ODE)
 
 $$\frac{d}{dt} \{ \phi_t(x) \} = v_t(\phi_t(x)) \quad (1)$$
+
 $$\phi_0(x) = x \quad (2)$$
 
 The flow $$\phi$$ pushes $$p_0$$ along the time dimension so that at $$t=1$$, the probability density becomes $$p_1$$. This is represented by the push-forward equation:
@@ -59,7 +60,7 @@ If this still feels abstract, imagine driving a car on a highway for the first t
 <figure>
 <img src="{{ "/assets/images/ppath.jpg" | absolute_url }}"
 width="60%" hspace="1" align="left">
-<figcaption> Reverse diffusion process </figcaption>
+<figcaption> Probability density path </figcaption>
 </figure>
 
 Now, let $$x_1$$ denote a random variable distributed according to the approximate data distribution $$p_1$$, with $$p_0$$ being a simple distribution like a Gaussian. As mentioned, $$v_t$$ determines the probability path and the flow. If we know $$v_t$$, we can transform $$p_0$$ into $$p_1$$. In other words, knowing $$v_t$$ allows us to model the data distribution $$p_1$$.
@@ -81,7 +82,7 @@ We design a conditional probability distribution $$p_1(x \mid x_1)$$ at $$t=1$$ 
 <figure>
 <img src="{{ "/assets/images/mixture.jpg" | absolute_url }}"
 width="60%" hspace="1" align="left">
-<figcaption> Reverse diffusion process </figcaption>
+<figcaption>Approximate complex distribution as mixture of simpler distributions </figcaption>
 </figure>
 
 The marginal probability $$p_1(x)$$ is represented as
@@ -99,16 +100,24 @@ $$p_t(x) = \int u_t(x \mid x_1)\frac{p_t(x \mid x_1) q(x_1)}{p_t(x)} \, dx_1$$
 
 This implies that while we don’t have a closed form for $$v_t$$, we can approximate it by aggregating all the conditional vector fields $$v_t(. \mid x_1)$$ according to all the datapoints.
 
-** Insert a figure here ** 
+<figure>
+<img src="{{ "/assets/images/cfm.jpg" | absolute_url }}"
+width="60%" hspace="1" align="left">
+<figcaption>Conditional Flow Matching </figcaption>
+</figure>
 
 So now we have the objective of CFM
-$L_{CFM}(\theta) = E_{t, q(x_1), p_t(x \mid x_1)} \{v_t(x) - u_t(x \mid x_1)\}$
+$$L_{CFM}(\theta) = E_{t, q(x_1), p_t(x \mid x_1)} \{v_t(x) - u_t(x \mid x_1)\}$$
 <!-- where t ∼ U[0, 1], x1 ∼ q(x1), and now x ∼ pt(x|x1). -->
 where $$t \sim U[0, 1]$, $$x_1 \sim q(x_1)$$, and now $$x \sim p_t(x \mid x_1)$$.
 
 Unlike the FM objective, the CFM objective is tractable. We can sample from $$p_t(x \mid x_1)$$ and compute $$u_t(x \mid x_1)$$, both of which can be easily done as they are defined on a per-sample basis. So now we’re ready to train a CFM model with this objective, right? Well, not quite! If you notice, $$p_t(x \mid x_1)$$ only specifies a probability path that somehow flows from $$p_0$$ to the dataset distribution. However, there are countless possible paths that can flow from $$p_0$$ to $$p_1$$. Consequently, there are also countless possible vector fields. So among these infinite paths, which one should we use in practice? Let's dive into the next part to figure it out.
 
-***Insert a figure here***
+<figure>
+<img src="{{ "/assets/images/multipath.jpg" | absolute_url }}"
+width="60%" hspace="1" align="left">
+<figcaption>Many paths that can flow p0 to p1 </figcaption>
+</figure>
 
 # CFM in practice 
 When training a Conditional Flow Matching (CFM) model, we can use any shape or type of probability path. Ideally, the modeling capability remains the same regardless of the chosen path, meaning the model can theoretically reach the global optimum with any path. However, in practice, we prefer using a straight-line probability path for several reasons:
