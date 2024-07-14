@@ -6,23 +6,22 @@ excerpt: "How I understand flow matching in theory and practice."
 comments: true
 ---
 
-Flow Matching has been generating significant buzz in the AI community lately. This innovative technique is poised to replace the highly successful Diffusion modeling and has already been integrated into cutting-edge models like Stable Diffusion 3, Resemble Enhance, and E2TTS. Intrigued by its potential, I decided to delve into the world of Flow Matching to understand how exactly it works in theory and practice.
+Flow Matching has been generating significant buzz in the AI community lately. This innovative technique is poised to replace the highly successful Diffusion modeling and has already been integrated into cutting-edge models like [Stable Diffusion 3](https://stability.ai/news/stable-diffusion-3), [Resemble Enhance](https://github.com/resemble-ai/resemble-enhance), and [E2TTS](https://arxiv.org/abs/2406.18009). Intrigued by its potential, I decided to delve into the world of Flow Matching to understand how exactly it works in theory and practice.
 
 Over the past few weeks, I immersed myself in learning about the concept of Flow Matching. While the journey was enjoyable, the concept proved to be quite abstract and challenging to understand. In this blog post, I aim to demystify Flow Matching and present it in a straightforward manner that anyone can follow. I hope someone would find this useful!
 
 # Diffusion Recap and Motivation of Flow Matching
 Most of us are probably somewhat familiar with the concept of the diffusion process in diffusion-based models. Let's refresh real quick.
 
-<figure>
+<!-- <figure>
 <img src="{{ "/assets/images/forward_diff.png" | absolute_url }}"
 width="60%" hspace="1" align="left">
 <figcaption> Forward diffusion process </figcaption>
-</figure>
+</figure> -->
 <figure>
 <img src="{{ "/assets/images/reverse_diff.png" | absolute_url }}"
 width="60%" hspace="1" align="left">
-<figcaption> Reverse diffusion process </figcaption>
-</figure>
+<figcaption style="text-align: center;">Diffusion process</figcaption></figure>
 
 In the forward diffusion process, noise is incrementally added to a data point over multiple steps. If enough steps are taken, the data point eventually transforms into complete noise. Conversely, the reverse diffusion process systematically denoises the noisy data point in multiple steps, reconstructing the original input.
 
@@ -33,6 +32,7 @@ Now, you might wonder: why do we need to specify processes to add and remove noi
 Before diving into the concept of Flow Matching (FM), let’s define the foundational components that build the FM framework.
 
 **Probability Density Path (p):**
+
 $[0,1] \times \mathbb{R}^d \rightarrow \mathbb{R} (>0)$
 
 Unlike a regular probability distribution, a probability density path is time-dependent (with time ranging from 0 to 1). At any given time and location, it provides the probability density of that specific location at that particular time. In deep learning,
