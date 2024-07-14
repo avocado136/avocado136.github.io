@@ -42,18 +42,18 @@ p0 (the distribution at t=0) is a simple distribution, such as a Gaussian, while
 **Vector Field (v):**
 $[0,1] \times \mathbb{R}^d \rightarrow \mathbb{R}^d$
 
-This constructs a flow $\phi$ defined by the Ordinary Differential Equation (ODE)
+This constructs a flow $$\phi$$ defined by the Ordinary Differential Equation (ODE)
 
 $\frac{d}{dt} \{ \phi_t(x) \} = v_t(\phi_t(x)) \quad (1)$
 $\phi_0(x) = x \quad (2)$
 
-The flow $\phi$ pushes $p_0$ along the time dimension so that at $t=1$, the probability density becomes $p_1$. This is represented by the push-forward equation:
+The flow $$\phi$$ pushes $$p_0$$ along the time dimension so that at $$t=1$$, the probability density becomes $$p_1$$. This is represented by the push-forward equation:
 
-$p_t = [\phi_t] * p_0$
+$$p_t = [\phi_t] * p_0$$
 
-To transition from a source distribution $p_0$ to a target distribution $p_1$, we need to understand the flow of the probability path. According to the ODE equation, $\phi_t$ is constructed by $v_t$. Therefore, to determine $\phi_t$, we only need to find $v_t$.
+To transition from a source distribution $$p_0$$ to a target distribution $$p_1$$, we need to understand the flow of the probability path. According to the ODE equation, $$\phi_t$$ is constructed by $$v_t$$. Therefore, to determine $$\phi_t$$, we only need to find $$v_t$$.
 
-If this still feels abstract, imagine driving a car on a highway for the first time without prior knowledge of how to reach the exit. You start at the entrance ($p_0$) and follow a series of small arrows ($v_t$) painted on the road, guiding you to the exit ($p_1$).
+If this still feels abstract, imagine driving a car on a highway for the first time without prior knowledge of how to reach the exit. You start at the entrance ($$p_0$$) and follow a series of small arrows ($$v_t$$) painted on the road, guiding you to the exit ($$p_1$$).
 
 <!-- ** Insert a figure of the highway example here **  -->
 <figure>
@@ -62,20 +62,20 @@ width="60%" hspace="1" align="left">
 <figcaption> Reverse diffusion process </figcaption>
 </figure>
 
-Now, let x1 denote a random variable distributed according to the approximate data distribution $p_1$, with $p_0$ being a simple distribution like a Gaussian. As mentioned, vt determines the probability path and the flow. If we know vt, we can transform $p_0$ into $p_1$. In other words, knowing vt allows us to model the data distribution $p_1$.
+Now, let x1 denote a random variable distributed according to the approximate data distribution $$p_1$$, with $$p_0$$ being a simple distribution like a Gaussian. As mentioned, vt determines the probability path and the flow. If we know vt, we can transform $$p_0$$ into $$p_1$$. In other words, knowing vt allows us to model the data distribution $$p_1$$.
 
 The Flow Matching objective is:
 <!-- L(θ) = E_{t,pt(x)} ||vt(x) - ut(x) || ^ 2  -->
-$L_FM(\theta) = E_{t, p_t(x)} ||v_t(x) - u_t(x)||^2$
+$$L_FM(\theta) = E_{t, p_t(x)} ||v_t(x) - u_t(x)||^2$$
 
-where $v_t(x)$ is the “ground truth” vector field, and $u_t(x)$ is the estimated vector field from a neural network. Simply put, FM loss minimizes the difference between the vector field $v_t$ and the predicted $u_t$.
+where $$v_t(x)$$ is the “ground truth” vector field, and $$u_t(x)$$ is the estimated vector field from a neural network. Simply put, FM loss minimizes the difference between the vector field $$v_t$$ and the predicted $$u_t$$.
 
-While this might seem straightforward, there's a significant problem: the FM objective is intractable. We don’t have a closed form for $v_t$ and $p_t$, which are what we’re trying to find. The solution to this issue is a method called Conditional Flow Matching.
+While this might seem straightforward, there's a significant problem: the FM objective is intractable. We don’t have a closed form for $$v_t$$ and $$p_t$$, which are what we’re trying to find. The solution to this issue is a method called Conditional Flow Matching.
 
 # Conditional Flow Matching 
-Given a dataset with $N$ datapoints $(x_{1_0}, x_{1_1}, x_{1_2}, \ldots, x_{1_N})$, it is nearly impossible to model the exact distribution of the dataset. However, we can approximate it by considering it as a mixture of simpler distributions.
+Given a dataset with $$N$$ datapoints $$(x_{1_0}, x_{1_1}, x_{1_2}, \ldots, x_{1_N})$$, it is nearly impossible to model the exact distribution of the dataset. However, we can approximate it by considering it as a mixture of simpler distributions.
 
-We design a conditional probability distribution $p_1(x \mid x_1)$ at $t=1$ to be concentrated around $x=x_1$. For instance, $p_1(x \mid x_1)$ can be a normal distribution with mean $x_1$ and a very small standard deviation $σ$, such as $p_1(x \mid x_1) = N(x \mid x_1, \sigma^2I)$. The overall distribution $p_1(x)$ is then approximately a mixture of all these conditional probability distributions centered around each datapoint in the dataset.
+We design a conditional probability distribution $$p_1(x \mid x_1)$$ at $$t=1$$ to be concentrated around $$x=x_1$$. For instance, $$p_1(x \mid x_1)$$ can be a normal distribution with mean $$x_1$$ and a very small standard deviation $$\sigma$$, such as $$p_1(x \mid x_1) = N(x \mid x_1, \sigma^2I)$$. The overall distribution $$p_1(x)$$ is then approximately a mixture of all these conditional probability distributions centered around each datapoint in the dataset.
 
 <!-- ** Insert a figure as the visualizer here ** -->
 <figure>
@@ -84,29 +84,29 @@ width="60%" hspace="1" align="left">
 <figcaption> Reverse diffusion process </figcaption>
 </figure>
 
-The marginal probability $p_1(x)$ is represented as
+The marginal probability $$p_1(x)$$ is represented as
 
 <!-- p1(x) = intergral { p1(x|x1)q(x1)dx1} -->
-$p_1(x) = \int p_1(x \mid x_1)q(x_1) \, dx_1$
+$$p_1(x) = \int p_1(x \mid x_1)q(x_1) \, dx_1$$
 
-Similarly, we can represent the probability path by marginalizing over the condition $x_1$:
+Similarly, we can represent the probability path by marginalizing over the condition $$x_1$$:
 
   <!-- pt(x) = intergral { pt(x|x1)q(x1)dx1}     -->
-$p_t(x) = \int p_t(x \mid x_1)q(x_1) \, dx_1$
+$$p_t(x) = \int p_t(x \mid x_1)q(x_1) \, dx_1$$
 
-We can also define the vector field $v_t$ by marginalizing over the conditional vector fields:
-$p_t(x) = \int u_t(x \mid x_1)\frac{p_t(x \mid x_1) q(x_1)}{p_t(x)} \, dx_1$
+We can also define the vector field $$v_t$$ by marginalizing over the conditional vector fields:
+$$p_t(x) = \int u_t(x \mid x_1)\frac{p_t(x \mid x_1) q(x_1)}{p_t(x)} \, dx_1$$
 
-This implies that while we don’t have a closed form for $v_t$, we can approximate it by aggregating all the conditional vector fields $v_t(. \mid x_1)$ according to all the datapoints.
+This implies that while we don’t have a closed form for $$v_t$$, we can approximate it by aggregating all the conditional vector fields $$v_t(. \mid x_1)$$ according to all the datapoints.
 
 ** Insert a figure here ** 
 
 So now we have the objective of CFM
 $L_{CFM}(\theta) = E_{t, q(x_1), p_t(x \mid x_1)} \{v_t(x) - u_t(x \mid x_1)\}$
 <!-- where t ∼ U[0, 1], x1 ∼ q(x1), and now x ∼ pt(x|x1). -->
-where $t \sim U[0, 1]$, $x_1 \sim q(x_1)$, and now $x \sim p_t(x \mid x_1)$.
+where $$t \sim U[0, 1]$, $$x_1 \sim q(x_1)$$, and now $$x \sim p_t(x \mid x_1)$$.
 
-Unlike the FM objective, the CFM objective is tractable. We can sample from $p_t(x \mid x_1)$ and compute $u_t(x \mid x_1)$, both of which can be easily done as they are defined on a per-sample basis. So now we’re ready to train a CFM model with this objective, right? Well, not quite! If you notice, $p_t(x \mid x_1)$ only specifies a probability path that somehow flows from $p_0$ to the dataset distribution. However, there are countless possible paths that can flow from $p_0$ to $p_1$. Consequently, there are also countless possible vector fields. So among these infinite paths, which one should we use in practice? Let's dive into the next part to figure it out.
+Unlike the FM objective, the CFM objective is tractable. We can sample from $$p_t(x \mid x_1)$$ and compute $$u_t(x \mid x_1)$$, both of which can be easily done as they are defined on a per-sample basis. So now we’re ready to train a CFM model with this objective, right? Well, not quite! If you notice, $$p_t(x \mid x_1)$$ only specifies a probability path that somehow flows from $$p_0$$ to the dataset distribution. However, there are countless possible paths that can flow from $$p_0$$ to $$p_1$$. Consequently, there are also countless possible vector fields. So among these infinite paths, which one should we use in practice? Let's dive into the next part to figure it out.
 
 ***Insert a figure here***
 
@@ -120,11 +120,11 @@ The most commonly used type of CFM, at least at the time of writing, is Optimal 
 <!-- 
     pt(x) = N(t*x1 + (1-t)x0, t(t-1)σ^2) 
     ut (x) = x1 - x0 -->
-$p_t(x) = N(t \cdot x_1 + (1 - t) \cdot x_0, t \cdot (t - 1) \cdot \sigma^2)$
+$$p_t(x) = N(t \cdot x_1 + (1 - t) \cdot x_0, t \cdot (t - 1) \cdot \sigma^2)$$
 
-$u_t(x) = x_1 - x_0$
+$$u_t(x) = x_1 - x_0$$
 
-The straight-line probability path is represented by the mean $\mu = t \cdot x_1 + (1 - t) \cdot x_0$ of $p_t$. When $t$ is close to $0$, $x_t$ is close to $x_0$, and when $t$ is close to $1$, $x_t$ is close to $x_1$. At any time between $[0,1]$, $\mu is the interpolation of $x_1$ and $x_0$.
+The straight-line probability path is represented by the mean $$\mu = t \cdot x_1 + (1 - t) \cdot x_0$$ of $$p_t$$. When $$t$$ is close to $$0$, $$x_t$$ is close to $$x_0$$, and when $$t$$ is close to $$1$$, $$x_t$$ is close to $$x_1$$. At any time between $$[0,1]$$, $$\mu$$ is the interpolation of $$x_1$$ and $$x_0$$.
 
 Below is the backbone of OTCFM in pseudo code if you ever wanna train a OTCFM model
 
