@@ -33,19 +33,19 @@ Before diving into the concept of Flow Matching (FM), let’s define the foundat
 
 **Probability Density Path (p):**
 
-$[0,1] \times \mathbb{R}^d \rightarrow \mathbb{R} (>0)$
+$$[0,1] \times \mathbb{R}^d \rightarrow \mathbb{R} (>0)$$
 
-Unlike a regular probability distribution, a probability density path is time-dependent (with time ranging from 0 to 1). At any given time and location, it provides the probability density of that specific location at that particular time. In deep learning,
+Unlike a regular probability distribution, a probability density path is time-dependent (with time ranging from $$0$$ to $$1$$). At any given time and location, it provides the probability density of that specific location at that particular time. In deep learning,
 
-p0 (the distribution at t=0) is a simple distribution, such as a Gaussian, while p1 (the distribution at t=1) represents the dataset distribution we aim to model.
+$$p_0$$ (the distribution at $$t=0$$) is a simple distribution, such as a Gaussian, while $$p_1$$ (the distribution at $$t=1$$) represents the dataset distribution we aim to model.
 
 **Vector Field (v):**
-$[0,1] \times \mathbb{R}^d \rightarrow \mathbb{R}^d$
+$$[0,1] \times \mathbb{R}^d \rightarrow \mathbb{R}^d$$
 
 This constructs a flow $$\phi$$ defined by the Ordinary Differential Equation (ODE)
 
-$\frac{d}{dt} \{ \phi_t(x) \} = v_t(\phi_t(x)) \quad (1)$
-$\phi_0(x) = x \quad (2)$
+$$\frac{d}{dt} \{ \phi_t(x) \} = v_t(\phi_t(x)) \quad (1)$$
+$$\phi_0(x) = x \quad (2)$$
 
 The flow $$\phi$$ pushes $$p_0$$ along the time dimension so that at $$t=1$$, the probability density becomes $$p_1$$. This is represented by the push-forward equation:
 
@@ -62,7 +62,7 @@ width="60%" hspace="1" align="left">
 <figcaption> Reverse diffusion process </figcaption>
 </figure>
 
-Now, let x1 denote a random variable distributed according to the approximate data distribution $$p_1$$, with $$p_0$$ being a simple distribution like a Gaussian. As mentioned, vt determines the probability path and the flow. If we know vt, we can transform $$p_0$$ into $$p_1$$. In other words, knowing vt allows us to model the data distribution $$p_1$$.
+Now, let $$x_1$$ denote a random variable distributed according to the approximate data distribution $$p_1$$, with $$p_0$$ being a simple distribution like a Gaussian. As mentioned, $$v_t$$ determines the probability path and the flow. If we know $$v_t$$, we can transform $$p_0$$ into $$p_1$$. In other words, knowing $$v_t$$ allows us to model the data distribution $$p_1$$.
 
 The Flow Matching objective is:
 <!-- L(θ) = E_{t,pt(x)} ||vt(x) - ut(x) || ^ 2  -->
