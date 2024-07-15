@@ -45,16 +45,16 @@ $$[0,1] \times \mathbb{R}^d \rightarrow \mathbb{R}^d$$
 
 This constructs a flow $$\phi$$ defined by the Ordinary Differential Equation (ODE)
 
-<!-- $$\frac{d}{dt} \{ \phi_t(x) \} = v_t(\phi_t(x)) \quad (1)$$
+$$\frac{d}{dt} \{ \phi_t(x) \} = v_t(\phi_t(x)) $$
 
-$$\phi_0(x) = x \quad (2)$$ -->
+$$\phi_0(x) = x $$
 
-$$
+<!-- $$
 \left. \begin{array}{l}
 \frac{d}{dt} \{ \phi_t(x) \} = v_t(\phi_t(x)) \\
 \phi_0(x) = x
 \end{array} \right\} \quad \text{(1)}
-$$
+$$ -->
 
 The flow $$\phi$$ pushes $$p_0$$ along the time dimension so that at $$t=1$$, the probability density becomes $$p_1$$. This is represented by the push-forward equation:
 
