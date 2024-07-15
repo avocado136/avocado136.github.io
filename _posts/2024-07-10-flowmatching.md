@@ -50,11 +50,10 @@ This constructs a flow $$\phi$$ defined by the Ordinary Differential Equation (O
 $$\phi_0(x) = x \quad (2)$$ -->
 
 $$
-\begin{aligned}
-\frac{d}{dt} \{ \phi_t(x) \} &= v_t(\phi_t(x)) \\
-\phi_0(x) &= x
-\end{aligned}
-\quad \left( \begin{aligned} & \\ & \end{aligned} \right.
+\left. \begin{array}{l}
+\frac{d}{dt} \{ \phi_t(x) \} = v_t(\phi_t(x)) \\
+\phi_0(x) = x
+\end{array} \right\} \quad \text{(1)}
 $$
 
 The flow $$\phi$$ pushes $$p_0$$ along the time dimension so that at $$t=1$$, the probability density becomes $$p_1$$. This is represented by the push-forward equation:
@@ -98,13 +97,10 @@ width="60%" hspace="1" align="left">
 
 The marginal probability $$p_1(x)$$ is represented as
 
-<!-- p1(x) = intergral { p1(x|x1)q(x1)dx1} -->
 
 $$p_1(x) = \int p_1(x \mid x_1)q(x_1) \, dx_1$$
 
 Similarly, we can represent the probability path by marginalizing over the condition $$x_1$$:
-
-  <!-- pt(x) = intergral { pt(x|x1)q(x1)dx1}     -->
 
 $$p_t(x) = \int p_t(x \mid x_1)q(x_1) \, dx_1$$
 
@@ -122,11 +118,11 @@ width="60%" hspace="1" align="left">
 
 So now we have the objective of CFM
 
-$$L_{CFM}(\theta) = E_{t, q(x_1), p_t(x \mid x_1)} ||v_t(x \mid x_1 ) - u_t(x)||^2 $$
+$$L_{CFM}(\theta) = E_{t, p(x_1), p_t(x \mid x_1)} ||v_t(x \mid x_1 ) - u_t(x)||^2 $$
 
 <!-- where t ∼ U[0, 1], x1 ∼ q(x1), and now x ∼ pt(x|x1). -->
 
-where $$t \sim U[0, 1], x_1 \sim q(x_1)$$, and now $$x \sim p_t(x \mid x_1)$$.
+where $$t \sim U[0, 1], x_1 \sim p(x_1)$$, and now $$x \sim p_t(x \mid x_1)$$.
 
 Unlike the FM objective, the CFM objective is tractable. We can sample from $$p_t(x \mid x_1)$$ and compute $$v_t(x \mid x_1)$$, both of which can be easily done as they are defined on a per-sample basis. So now we’re ready to train a CFM model with this objective, right? Well, not quite! If you notice, $$p_t(x \mid x_1)$$ only specifies a probability path that somehow flows from $$p_0$$ to the dataset distribution. However, there are countless possible paths that can flow from $$p_0$$ to $$p_1$$. Consequently, there are also countless possible vector fields. So among these infinite paths, which one should we use in practice? Let's dive into the next part to figure it out.
 
