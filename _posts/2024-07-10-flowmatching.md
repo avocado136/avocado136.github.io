@@ -13,15 +13,11 @@ Over the past few weeks, I immersed myself in learning about the concept of Flow
 # Diffusion Recap and Motivation of Flow Matching
 Most of us are probably somewhat familiar with the concept of the diffusion process in diffusion-based models. Let's refresh real quick.
 
-<!-- <figure>
-<img src="{{ "/assets/images/forward_diff.png" | absolute_url }}"
-width="60%" hspace="1" align="left">
-<figcaption> Forward diffusion process </figcaption>
-</figure> -->
 <figure>
 <img src="{{ "/assets/images/reverse_diff.png" | absolute_url }}"
 width="60%" hspace="1" align="left">
-<figcaption style="text-align: center;"> Diffusion process</figcaption></figure>
+<!-- <figcaption style="text-align: center;"> Diffusion process</figcaption> -->
+</figure>
 
 In the forward diffusion process, noise is incrementally added to a data point over multiple steps. If enough steps are taken, the data point eventually transforms into complete noise. Conversely, the reverse diffusion process systematically denoises the noisy data point in multiple steps, reconstructing the original input.
 
@@ -29,7 +25,7 @@ Now, you might wonder: why do we need to specify processes to add and remove noi
 
 # Flow Matching
 
-Before diving into the concept of Flow Matching (FM), let’s define the foundational components that build the FM framework.
+Before diving into the concept of Flow Matching (*FM*), let’s define the foundational components that build the FM framework.
 
 **Probability Density Path (p):**
 
@@ -49,12 +45,6 @@ $$\frac{d}{dt} \{ \phi_t(x) \} = v_t(\phi_t(x)) $$
 
 $$\phi_0(x) = x $$
 
-<!-- $$
-\left. \begin{array}{l}
-\frac{d}{dt} \{ \phi_t(x) \} = v_t(\phi_t(x)) \\
-\phi_0(x) = x
-\end{array} \right\} \quad \text{(1)}
-$$ -->
 
 The flow $$\phi$$ pushes $$p_0$$ along the time dimension so that at $$t=1$$, the probability density becomes $$p_1$$. This is represented by the push-forward equation:
 
@@ -86,11 +76,10 @@ Given a dataset with $$N$$ datapoints $$(x_{1_0}, x_{1_1}, x_{1_2}, \ldots, x_{1
 
 We design a conditional probability distribution $$p_1(x \mid x_1)$$ at $$t=1$$ to be concentrated around $$x=x_1$$. For instance, $$p_1(x \mid x_1)$$ can be a normal distribution with mean $$x_1$$ and a very small standard deviation $$\sigma$$, such as $$p_1(x \mid x_1) = N(x \mid x_1, \sigma^2I)$$. The overall distribution $$p_1(x)$$ is then approximately a mixture of all these conditional probability distributions centered around each datapoint in the dataset.
 
-<!-- ** Insert a figure as the visualizer here ** -->
 <figure>
 <img src="{{ "/assets/images/mixture.jpg" | absolute_url }}"
 width="60%" hspace="1" align="left">
-<figcaption>Approximate complex distribution as mixture of simpler distributions </figcaption>
+<!-- <figcaption>Approximate complex distribution as mixture of simpler distributions </figcaption> -->
 </figure>
 
 The marginal probability $$p_1(x)$$ is represented as
@@ -111,14 +100,12 @@ This implies that while we don’t have a closed form for $$v_t$$, we can approx
 <figure>
 <img src="{{ "/assets/images/cfm.jpg" | absolute_url }}"
 width="60%" hspace="1" align="left">
-<figcaption>Conditional Flow Matching </figcaption>
+<!-- <figcaption>Conditional Flow Matching </figcaption> -->
 </figure>
 
 So now we have the objective of CFM
 
 $$L_{CFM}(\theta) = E_{t, p(x_1), p_t(x \mid x_1)} ||v_t(x \mid x_1 ) - u_t(x)||^2 $$
-
-<!-- where t ∼ U[0, 1], x1 ∼ q(x1), and now x ∼ pt(x|x1). -->
 
 where $$t \sim U[0, 1], x_1 \sim p(x_1)$$, and now $$x \sim p_t(x \mid x_1)$$.
 
@@ -136,10 +123,6 @@ When training a Conditional Flow Matching (CFM) model, we can use any shape or t
 - Fewer steps needed during inference to achieve the same quality, resulting in faster inference
 
 The most commonly used type of CFM, at least at the time of writing, is Optimal Transport Conditional Flow Matching (OTCFM). In OTCFM, the conditional probability path and the conditional vector field are defined as:
-
-<!-- 
-    pt(x) = N(t*x1 + (1-t)x0, t(t-1)σ^2) 
-    ut (x) = x1 - x0 -->
 
 $$p_t(x) = N(tx_1 + (1 - t)x_0, t(t - 1)\sigma^2)$$
 
