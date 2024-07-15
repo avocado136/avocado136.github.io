@@ -71,9 +71,27 @@ width="60%" hspace="1" align="left">
 <figcaption> Probability density path </figcaption>
 </figure> -->
 
+<style>
+  .centered-figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .centered-figure img {
+    max-width: 100%;
+  }
+
+  .centered-figure figcaption {
+    text-align: center;
+    margin-top: 10px; /* Optional: Adds space between image and caption */
+  }
+</style>
+
 <figure style="text-align: center;">
     <img src="{{ '/assets/images/ppath.jpg' | absolute_url }}" width="60%" hspace="1">
-    <figcaption style="text-align: center;">Probability density path</figcaption>
+    <figcaption style="text-align: center;">Probability density path 1</figcaption>
 </figure>
 
 Now, let $$x_1$$ denote a random variable distributed according to the approximate data distribution $$p_1$$, with $$p_0$$ being a simple distribution like a Gaussian. As mentioned, $$v_t$$ determines the probability path and the flow. If we know $$v_t$$, we can transform $$p_0$$ into $$p_1$$. In other words, knowing $$v_t$$ allows us to model the data distribution $$p_1$$.
