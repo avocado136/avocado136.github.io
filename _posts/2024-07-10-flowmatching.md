@@ -133,7 +133,7 @@ The straight-line probability path is represented by the mean $$\mu = tx_1 + (1 
 Below is the backbone of OTCFM in pseudo code if you ever wanna train a OTCFM model
 
 
-```
+```python
 import torch 
 
 # optimal transport conditional flow matching loss
@@ -190,7 +190,6 @@ class OTCFM(nn.Module):
         loss_otcfm = self.loss_otcfm(ut, vt)
 
         return loss_otcfm
-
 ```
 
 (WIP)
