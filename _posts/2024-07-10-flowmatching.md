@@ -132,6 +132,67 @@ The straight-line probability path is represented by the mean $$\mu = tx_1 + (1 
 
 Below is the backbone of OTCFM in pseudo code if you ever wanna train a OTCFM model
 
+
+```
+import torch 
+
+# optimal transport conditional flow matching loss
+class OTCFMLoss(nn.Module):
+    def __init__(self):
+        super(OTCFMLoss, self).__init__()
+    def forward(self, ut, vt):
+        loss_otcfm = torch.mean((vt - ut) ** 2)
+        return loss_otcfm
+
+# optimal transport conditional flow matching
+class OTCFM(nn.Module):
+    def __init__(self, 
+                 sigma=0.0001
+                 ):
+        super(OTCFM, self).__init__()
+
+        self.sigma = sigma
+        self.estimator = Estimator()
+        self.timestep_embedding = Time_Embedding()
+        self.conditioning_timestep_integrator = NN()
+        self.xt_and_emb_integrator = NN()
+
+        self.loss_otcfm = OTCFMLoss()
+
+    def forward(self, x1, cond):
+        """
+        x1 <float> (B, D, T) –> Target 
+        cond <float> (B, D, T) –> conditioning - optional
+        """
+        B, D, T = x1.shape
+        t = torch.rand(
+            (B, 1, 1), dtype=x1.dtype, device=x1.device, requires_grad=False)
+
+        # spherical gaussian noise
+        x0 = torch.randn_like(x1)
+
+        # interpolation between t-scaled x0 and x1
+        xt = (1 - (1 - self.sigma) * t) * x0 + t * x1
+
+        # interpolation between x1 and sigma scaled x0
+        vt = x1 - x0 * (1 - self.sigma)
+
+        time_emb = self.timestep_embedding(t[:, 0, 0])
+
+        # intergrading conditioning and time embedding
+        cond = self.conditioning_timestep_integrator(cond, time_emb)
+
+        # integrating xt and cond
+        x = self.xt_and_emb_integrator(xt, cond)
+
+        ut = self.estimator(x)
+
+        loss_otcfm = self.loss_otcfm(ut, vt)
+
+        return loss_otcfm
+
+```
+
 (WIP)
 
 # Conclusion
