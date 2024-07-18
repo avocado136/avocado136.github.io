@@ -130,8 +130,7 @@ $$u_t(x) = x_1 - x_0$$
 
 The straight-line probability path is represented by the mean $$\mu = tx_1 + (1 - t)x_0$$ of $$p_t$$. When $$t$$ is close to $$0$$, $$x_t$$ is close to $$x_0$$, and when $$t$$ is close to $$1$$, $$x_t$$ is close to $$x_1$$. At any time between $$[0,1]$$, $$\mu$$ is the interpolation of $$x_1$$ and $$x_0$$.
 
-Below is the backbone of OTCFM in pseudo code if you ever wanna train a OTCFM model
-
+Below is the backbone of OTCFM in semi-pseudo code if you ever wanna train a OTCFM model
 
 ```python
 import torch 
@@ -192,10 +191,41 @@ class OTCFM(nn.Module):
         return loss_otcfm
 ```
 
-(WIP)
+After training, we obtain a neural network (estimator) that can estimate the vector field. So, what's next? How do we perform inference with this estimator and the predicted vector field? The answer lies in using a Solver to solve the numerical integration of the Ordinary Differential Equation (ODE). There are several types of solvers available for ODEs, with one common method being the Euler method. Below is a semi-pseudo inference code using the Euler method:
+```python
+    @torch.inference_mode()
+    def inference(self, cond, n_steps=10):
+
+        xt = torch.randn_like(...)  # same size as x1 in forward()
+        t_span = torch.linspace(0, 1, n_steps + 1, device=xt.device)
+
+        t, _, dt = t_span[0], t_span[-1], t_span[1] - t_span[0]
+
+        for step in tqdm(range(1, len(t_span)), desc="Processing steps"):
+            time_emb = self.timestep_embedding(t[:, 0, 0])
+
+            # intergrading conditioning and time embedding
+            cond = self.conditioning_timestep_integrator(cond, time_emb)
+
+            # integrating xt and cond
+            x = self.xt_and_emb_integrator(xt, cond)
+
+            ut = self.estimator(x)
+            
+            dphi_dt = ut
+
+            # ODE - using Euler method
+            xt = xt + dt * dphi_dt
+            t = t + dt
+
+            if step < len(t_span) - 1:
+                dt = t_span[step + 1] - t
+
+        return xt
+```
 
 # Conclusion
-(WIP)
+Flow Matching represents a significant advancement in deep learning, offering a more flexible and efficient approach to modeling complex data distributions. By understanding the principles behind Diffusion models, Flow Matching, and Conditional Flow Matching, we can appreciate the innovation and potential of these techniques. Through practical implementation, such as using the Euler method for inference, Flow Matching becomes a powerful tool in the AI toolkit. I hope this guide has provided you with a clear and approachable understanding of Flow Matching and its applications. Keep learning!
 
 
 
