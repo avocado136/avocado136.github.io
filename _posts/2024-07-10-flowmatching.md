@@ -191,7 +191,7 @@ class OTCFM(nn.Module):
         return loss_otcfm
 ```
 
-<table>
+<!-- <table>
     <tbody>
         <tr>
         <th>Ground Truth</th>
@@ -210,7 +210,7 @@ class OTCFM(nn.Module):
         <td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/StyleTTS/00005.wav"></audio></td> -->
         </tr>
     </tbody>
-</table>
+</table> -->
 
 After training, we obtain a neural network (estimator) that can estimate the vector field. So, what's next? How do we perform inference with this estimator and the predicted vector field? The answer lies in using a Solver to solve the numerical integration of the Ordinary Differential Equation (ODE). There are several types of solvers available for ODEs, with one common method being the Euler method. Below is a semi-pseudo inference code using the Euler method:
 ```python
