@@ -196,18 +196,18 @@ class OTCFM(nn.Module):
         <tr>
         <th>Ground Truth</th>
         <th>StyleTTS 2</th>
-        <th>NaturalSpeech</th>
+        <!-- <th>NaturalSpeech</th>
         <th>JETS</th>
         <th>VITS</th>
-        <th>StyleTTS</th>
+        <th>StyleTTS</th> -->
         </tr>
         <tr>
         <td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/GT/00005.wav"></audio></td>
         <td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/StyleTTS2/00005.wav"></audio></td>
-        <td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/NaturalSpeech/00005.wav"></audio></td>
+        <!-- <td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/NaturalSpeech/00005.wav"></audio></td>
         <td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/JETS/00005.wav"></audio></td>
         <td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/VITS/00005.wav"></audio></td>
-        <td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/StyleTTS/00005.wav"></audio></td>
+        <td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/StyleTTS/00005.wav"></audio></td> -->
         </tr>
     </tbody>
 </table>
