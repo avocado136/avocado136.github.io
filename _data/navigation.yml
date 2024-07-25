@@ -11,12 +11,12 @@ main:
   # - title: "Blog"
   #   url: /blog/
 
-# # sidebar for portfolio
-# portfolio:
-#   - title: "Projects"
-#     children:
-# #      - title: "Machine Learning on AWS"
-# #        url: /portfolio/coming/
+# sidebar for portfolio
+portfolio:
+  - title: "Projects"
+    children:
+     - title: "Flow Matching for TortoiseTTS"
+       url: /portfolio/flow_matching_tortoisetts
 #       - title: "Anomaly Detection in Social Networks"
 #         url: /portfolio/social-networks/
 #       - title: "NetComp: Python Network Comparison"

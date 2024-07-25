@@ -11,23 +11,9 @@ feature_row:
     alt: "Flow Matching Tortoise"
     title: "Flow Matching Tortoise: Apply Optimal-Transport Flow Matching to TortoiseTTS"
     excerpt: "An attempt to repalce Diffusion model in TortoiseTTS."
-    url: "/portfolio/flowmatchingtortoisetts/"
+    url: "/portfolio/flow_matching_tortoisetts/"
     btn_label: "Read More"
     btn_class: "btn--primary"	
-  # - image_path: /assets/images/miles.jpg
-    # alt: "Music"
-    # title: "Algorithmic Musical Genre Classification"
-    # excerpt: "Detection of musical genre directly from the audio file."
-    # url: "/portfolio/genre_cls/"
-    # btn_label: "Read More"
-    # btn_class: "btn--primary"	
-  # - image_path: /assets/images/social_network.jpg
-  #   alt: "Social Network"
-  #   title: "Anomaly Detection in Social Networks"
-  #   excerpt: "Anomaly detection in social network data, using the graph resistance."
-  #   url: "/portfolio/social-networks/"
-  #   btn_label: "Read More"
-  #   btn_class: "btn--primary"
 ---
 
 # Portfolio
