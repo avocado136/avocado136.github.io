@@ -15,10 +15,10 @@ main:
 portfolio:
   - title: "Projects"
     children:
-     - title: "Flow Matching for TortoiseTTS"
-       url: /portfolio/flow_matching_tortoisetts
-#       - title: "Anomaly Detection in Social Networks"
-#         url: /portfolio/social-networks/
+      - title: "Flow Matching for TortoiseTTS"
+        url: /portfolio/flow_matching_tortoisetts/
+      # - title: "Anomaly Detection in Social Networks"
+      #   url: /portfolio/social-networks/
 #       - title: "NetComp: Python Network Comparison"
 #         url: /portfolio/netcomp/
 #       - title: "Automatic Genre Classification"
