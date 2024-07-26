@@ -10,6 +10,8 @@ Flow Matching has been generating significant buzz in the AI community lately. T
 
 Over the past few weeks, I immersed myself in learning about the concept of Flow Matching. While the journey was enjoyable, the concept proved to be quite abstract and challenging to understand. In this blog post, I aim to demystify Flow Matching and present it in a straightforward manner that anyone can follow. I hope someone would find this useful!
 
+***Update***: I recently applied Flow Matching to my area of expertise—Speech Synthesis. If you're interested in seeing how it works in this context, check out my detailed exploration [here](https://avocado136.github.io/portfolio/flow_matching_tortoisetts/).
+
 # Diffusion Recap and Motivation of Flow Matching
 Most of us are probably somewhat familiar with the concept of the diffusion process in diffusion-based models. Let's refresh real quick.
 
