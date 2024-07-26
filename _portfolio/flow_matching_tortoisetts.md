@@ -36,8 +36,8 @@ The original diffusion model in TortoiseTTS was trained using a massive dataset 
 
 Here are some audio samples from TortoiseTTS after replacing the Diffusion Model with the Flow Matching model. Take a listen and see how the new model performs!
 
-<p><b>Text: </b><span class="text">Forty one percent of enterprises that have already deployed generative AI expect to increase the adoption of open-source models when they match performance with the leading proprietary models.</span></p>
-<p><b>Text: </b><span class="text">Prompt</span></p>
+<p><b> Example 1: Text: </b><em class="text">Forty one percent of enterprises that have already deployed generative AI expect to increase the adoption of open-source models when they match performance with the leading proprietary models.</em></p>
+<p><span class="text">Prompt</span></p>
 <td><audio controls preload="none" class="id"><source src="/assets/audios/1.wav"></audio></td>
 <table>
     <tbody>
