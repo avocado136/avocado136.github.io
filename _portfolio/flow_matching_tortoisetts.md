@@ -36,6 +36,21 @@ The original diffusion model in TortoiseTTS was trained using a massive dataset 
 
 Here are some audio samples from TortoiseTTS after replacing the Diffusion Model with the Flow Matching model. Take a listen and see how the new model performs!
 
+<p><b>Text: </b><span class="text">Forty one percent of enterprises that have already deployed generative AI expect to increase the adoption of open-source models when they match performance with the leading proprietary models.</span></p>
+<p><b>Text: </b><span class="text">Prompt</span></p>
+<td><audio controls preload="none" class="id"><source src="/assets/audios/1.wav"></audio></td>
+<table>
+    <tbody>
+        <tr>
+        <th>Diffusion - 2 steps</th>
+        <th>Flow Matching - 2 steps</th>
+        </tr>
+        <tr>
+        <td><audio controls preload="none" class="id"><source src="/assets/audios/1_prompt_diff_2.wav"></audio></td>
+        <td><audio controls preload="none" class="id"><source src="/assets/audios/1_prompt_fm_2.wav"></audio></td>
+        </tr>
+    </tbody>
+</table>
 
 From the results, we can clearly see that Flow Matching generates audio of decent quality with fewer steps than the Diffusion model. This means that Flow Matching can achieve the same level of quality more quickly. I also want to emphasize that my Flow Matching model was trained using a much smaller dataset compared to the one used for Diffusion. Despite this, the audio quality produced by Flow Matching is often on par with, if not better, that of the Diffusion model. This indicates that Flow Matching can be much more data-efficient than the Diffusion model.
 
