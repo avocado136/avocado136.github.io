@@ -2,7 +2,7 @@
 header:
   overlay_image: /assets/images/code.jpg
   caption: "Photo credit: [**Marcus Spiske**](https://unsplash.com)"
-permalink: /portfolio/deskai/
+permalink: /portfolio/flow_matching_tortoisetts/
 date: 2024-07-10
 toc: true
 toc_label: "Contents"
