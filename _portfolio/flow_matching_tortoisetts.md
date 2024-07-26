@@ -103,6 +103,73 @@ Here are some audio samples from TortoiseTTS after replacing the Diffusion Model
     </tbody>
 </table>
 
+<p><b> Example 2: Text: </b><em class="text">ome design philosophies say you shouldn’t envision a specific product from the start. Instead, they recommend starting with a problem to be solved and then carefully studying the market before you devise a concrete solution.</em></p>
+<p><span class="text">Prompt</span></p>
+<td><audio controls preload="none" class="id"><source src="/assets/audios/2.wav"></audio></td>
+<table>
+    <tbody>
+        <tr>
+        <th>Diffusion - 2 steps</th>
+        <th>Flow Matching - 2 steps</th>
+        </tr>
+        <tr>
+        <td><audio controls preload="none" class="id"><source src="/assets/audios/2_prompt_diff_2.wav"></audio></td>
+        <td><audio controls preload="none" class="id"><source src="/assets/audios/2_prompt_fm_2.wav"></audio></td>
+        </tr>
+    </tbody>
+</table>
+<table>
+    <tbody>
+        <tr>
+        <th>Diffusion - 3 steps</th>
+        <th>Flow Matching - 3 steps</th>
+        </tr>
+        <tr>
+        <td><audio controls preload="none" class="id"><source src="/assets/audios/2_prompt_diff_3.wav"></audio></td>
+        <td><audio controls preload="none" class="id"><source src="/assets/audios/2_prompt_fm_3.wav"></audio></td>
+        </tr>
+    </tbody>
+</table>
+
+<table>
+    <tbody>
+        <tr>
+        <th>Diffusion - 5 steps</th>
+        <th>Flow Matching - 5 steps</th>
+        </tr>
+        <tr>
+        <td><audio controls preload="none" class="id"><source src="/assets/audios/2_prompt_diff_5.wav"></audio></td>
+        <td><audio controls preload="none" class="id"><source src="/assets/audios/2_prompt_fm_5.wav"></audio></td>
+        </tr>
+    </tbody>
+</table>
+
+<table>
+    <tbody>
+        <tr>
+        <th>Diffusion - 20 steps</th>
+        <th>Flow Matching - 20 steps</th>
+        </tr>
+        <tr>
+        <td><audio controls preload="none" class="id"><source src="/assets/audios/2_prompt_diff_20.wav"></audio></td>
+        <td><audio controls preload="none" class="id"><source src="/assets/audios/2_prompt_fm_20.wav"></audio></td>
+        </tr>
+    </tbody>
+</table>
+
+<table>
+    <tbody>
+        <tr>
+        <th>Diffusion - 50 steps</th>
+        <th>Flow Matching - 50 steps</th>
+        </tr>
+        <tr>
+        <td><audio controls preload="none" class="id"><source src="/assets/audios/2_prompt_diff_50.wav"></audio></td>
+        <td><audio controls preload="none" class="id"><source src="/assets/audios/2_prompt_fm_50.wav"></audio></td>
+        </tr>
+    </tbody>
+</table>
+
 From the results, we can clearly see that Flow Matching generates audio of decent quality with fewer steps than the Diffusion model. This means that Flow Matching can achieve the same level of quality more quickly. I also want to emphasize that my Flow Matching model was trained using a much smaller dataset compared to the one used for Diffusion. Despite this, the audio quality produced by Flow Matching is often on par with, if not better, that of the Diffusion model. This indicates that Flow Matching can be much more data-efficient than the Diffusion model.
 
 However, I do believe that my Flow Matching model is inferior to the Diffusion model in some aspects due to the lack of training data. One of these aspects is voice cloning capability—the speaker similarity between the prompt and the synthesized voice. The Diffusion model in TortoiseTTS was trained on **65 million** samples, which likely cover a greater variety of speakers than LibriTTS. But I am confident that with access to the same amount of data used to train the Diffusion model, Flow Matching could perform much better in terms of speaker similarity.
