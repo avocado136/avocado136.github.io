@@ -1,7 +1,7 @@
 ---
 header:
   overlay_image: /assets/images/rag.png
-#   caption: "Photo credit: [**Marcus Spiske**](https://unsplash.com)"
+  caption: "Photo credit: [**Marcus Spiske**](https://unsplash.com)"
 permalink: /portfolio/rag_app/
 date: 2024-11-02
 toc: true
