@@ -14,6 +14,14 @@ feature_row:
     url: "/portfolio/flow_matching_tortoisetts/"
     btn_label: "Read More"
     btn_class: "btn--primary"	
+  - image_path: assets/images/rag.png
+    alt: "A Simple Chatbot to Practic RAG"
+    title: "A Simple Chatbot to Practic RAG"
+    excerpt: "A Simple Chatbot to Practic RAG"
+    url: "/portfolio/rag_app/"
+    btn_label: "Read More"
+    btn_class: "btn--primary"	
+
 ---
 
 # Portfolio
