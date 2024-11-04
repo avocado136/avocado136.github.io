@@ -15,8 +15,8 @@ main:
 portfolio:
   - title: "Projects"
     children:
-      - title: "Flow Matching for TortoiseTTS"
-        url: /portfolio/flow_matching_tortoisetts/
+      # - title: "Flow Matching for TortoiseTTS"
+      #   url: /portfolio/flow_matching_tortoisetts/
       - title: "A Simple Chatbot to Practic RAG"
         url: /portfolio/rag_app/
       # - title: "Anomaly Detection in Social Networks"
