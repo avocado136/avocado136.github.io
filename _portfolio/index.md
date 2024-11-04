@@ -7,6 +7,14 @@ permalink: /portfolio/index.html
 date: 2024-07-10
 
 feature_row:
+  - image_path: assets/images/tortoise.jpg
+    alt: "Flow Matching Tortoise"
+    title: "Flow Matching Tortoise: Apply Optimal-Transport Flow Matching to TortoiseTTS"
+    excerpt: "An attempt to repalce Diffusion model in TortoiseTTS."
+    url: "/portfolio/flow_matching_tortoisetts/"
+    btn_label: "Read More"
+    btn_class: "btn--primary"	
+    
   - image_path: assets/images/rag.png
     alt: "A Simple Chatbot to Practic RAG"
     title: "A Simple Chatbot to Practic RAG"
@@ -14,7 +22,6 @@ feature_row:
     url: "/portfolio/rag_app/"
     btn_label: "Read More"
     btn_class: "btn--primary"	
-
 ---
 
 # Portfolio
