@@ -2,37 +2,111 @@
 layout: archive
 ---
 
-{{ content }}
+<main role="main" aria-label="Main content">
+  {{ content }}
 
-<h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
+  <section class="recent-posts" aria-labelledby="recent-posts-heading">
+    <h3 id="recent-posts-heading" class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
 
-{% if paginator %}
-  {% assign posts = paginator.posts %}
-{% else %}
-  {% assign posts = site.posts %}
-{% endif %}
+    {% if paginator %}
+      {% assign posts = paginator.posts %}
+    {% else %}
+      {% assign posts = site.posts %}
+    {% endif %}
 
-{% assign entries_layout = page.entries_layout | default: 'list' %}
-<div class="entries-{{ entries_layout }}">
-  {% for post in posts %}
-    <div class="archive__item">
-      <h2 class="archive__item-title" itemprop="headline">
-        {% if post.link %}
-          <a href="{{ post.link }}">{{ post.title }}</a> <a href="{{ post.url | relative_url }}" rel="permalink"><i class="fas fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
-        {% else %}
-          <a href="{{ post.url | relative_url }}" rel="permalink">{{ post.title }}</a>
-        {% endif %}
-      </h2>
-      
-      {% include post-meta.html post=post %}
-      
-      {% if post.excerpt %}
-        <div class="archive__item-excerpt" itemprop="description">
-          {{ post.excerpt | markdownify | strip_html | truncate: 160 }}
-        </div>
-      {% endif %}
+    {% assign entries_layout = page.entries_layout | default: 'list' %}
+    <div class="entries-{{ entries_layout }}" role="list" aria-label="Blog posts">
+      {% for post in posts %}
+        <article class="archive__item" role="listitem" itemscope itemtype="https://schema.org/BlogPosting">
+          <header>
+            <h2 class="archive__item-title" itemprop="headline">
+              {% if post.link %}
+                <a href="{{ post.link }}" itemprop="url" aria-label="External link: {{ post.title }}">{{ post.title }}</a> 
+                <a href="{{ post.url | relative_url }}" rel="permalink" aria-label="Permalink to {{ post.title }}">
+                  <i class="fas fa-link" aria-hidden="true" title="permalink"></i>
+                  <span class="sr-only">Permalink</span>
+                </a>
+              {% else %}
+                <a href="{{ post.url | relative_url }}" rel="permalink" itemprop="url" aria-label="Read more about {{ post.title }}">{{ post.title }}</a>
+              {% endif %}
+            </h2>
+            
+            {% include post-meta.html post=post %}
+          </header>
+          
+          {% if post.excerpt %}
+            <div class="archive__item-excerpt" itemprop="description">
+              {{ post.excerpt | markdownify | strip_html | truncate: 160 }}
+            </div>
+          {% endif %}
+        </article>
+      {% endfor %}
     </div>
-  {% endfor %}
-</div>
+  </section>
 
-{% include paginator.html %}
+  {% include paginator.html %}
+
+  <section class="featured-projects" aria-labelledby="featured-projects-heading">
+    <h3 id="featured-projects-heading" class="archive__subtitle">Featured Projects</h3>
+    
+    <div class="entries-list" role="list" aria-label="Featured projects">
+      <!-- Flow Matching for TortoiseTTS -->
+      {% for project in site.portfolio %}
+        {% if project.url contains "flow_matching_tortoisetts" %}
+          <article class="archive__item project-item" role="listitem" itemscope itemtype="https://schema.org/CreativeWork">
+            <header>
+              <h2 class="archive__item-title" itemprop="name">
+                <a href="{{ project.url | relative_url }}" rel="permalink" itemprop="url">Flow Matching for TortoiseTTS</a>
+              </h2>
+              
+              <div class="archive__item-meta project-meta" role="group" aria-label="Project metadata">
+                {% if project.date %}
+                  <time class="meta-item" datetime="{{ project.date | date_to_xmlschema }}" itemprop="dateCreated">
+                    <span aria-label="Project date">{{ project.date | date: "%Y" }}</span>
+                  </time>
+                {% endif %}
+              </div>
+            </header>
+            
+            <div class="archive__item-excerpt" itemprop="description">
+              Apply Optimal-Transport Flow Matching to TortoiseTTS to replace the existing diffusion model while maintaining high-quality audio output.
+            </div>
+          </article>
+          {% break %}
+        {% endif %}
+      {% endfor %}
+      
+      <!-- RAG Chatbot -->
+      {% for project in site.portfolio %}
+        {% if project.url contains "rag_app" %}
+          <article class="archive__item project-item" role="listitem" itemscope itemtype="https://schema.org/CreativeWork">
+            <header>
+              <h2 class="archive__item-title" itemprop="name">
+                <a href="{{ project.url | relative_url }}" rel="permalink" itemprop="url">A Simple Chatbot to Practice RAG</a>
+              </h2>
+              
+              <div class="archive__item-meta project-meta" role="group" aria-label="Project metadata">
+                {% if project.date %}
+                  <time class="meta-item" datetime="{{ project.date | date_to_xmlschema }}" itemprop="dateCreated">
+                    <span aria-label="Project date">{{ project.date | date: "%Y" }}</span>
+                  </time>
+                {% endif %}
+              </div>
+            </header>
+            
+            <div class="archive__item-excerpt" itemprop="description">
+              A chatbot implementation using Retrieval Augmented Generation (RAG) to combine language generation with real-time document retrieval for enhanced responses.
+            </div>
+          </article>
+          {% break %}
+        {% endif %}
+      {% endfor %}
+    </div>
+    
+    <div class="view-all-projects">
+      <a href="/portfolio/" class="btn btn--primary" aria-label="View all projects in portfolio">
+        View All Projects →
+      </a>
+    </div>
+  </section>
+</main>
