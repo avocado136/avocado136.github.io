@@ -8,8 +8,8 @@ main:
     url: /portfolio/
   - title: "Resume"
     url: /assets/docs/Kim_Nguyen_102024.pdf
-  # - title: "Blog"
-  #   url: /blog/
+  - title: "Blog"
+    url: /
 
 # sidebar for portfolio
 portfolio:

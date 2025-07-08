@@ -6,3 +6,166 @@
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
+
+/* Navigation Improvements */
+// Sticky Navigation
+.masthead {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #f3f3f3;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+// Navigation Hover Effects
+.visible-links {
+  a {
+    position: relative;
+    transition: color 0.3s ease;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #343434;
+      transition: width 0.3s ease;
+    }
+    
+    &:hover {
+      color: #343434;
+      
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+/* Blog Post Card Layout */
+.archive__item {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 0.7rem 1rem 1rem 1rem;
+  margin-bottom: 1.2rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid #e9dcbe;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  }
+}
+
+.archive__item-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  
+  a {
+    color: #2c3e50;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    
+    &:hover {
+      color: #3498db;
+    }
+  }
+}
+
+// Post Metadata
+.archive__item-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    
+    &::before {
+      content: "📅";
+      margin-right: 0.2rem;
+    }
+    
+    &.read-time::before {
+      content: "⏱️";
+    }
+    
+    &.category::before {
+      content: "📂";
+    }
+  }
+}
+
+.archive__item-excerpt {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+// Tags styling
+.archive__item-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.3rem;
+  
+  .tag {
+    background: #f8f9fa;
+    color: #495057;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    border: 1px solid #dee2e6;
+    transition: background-color 0.2s ease;
+    
+    &:hover {
+      background: #e9ecef;
+    }
+  }
+}
+
+// Improve overall spacing
+.archive {
+  padding: 2rem 0;
+}
+
+// Enhanced typography for better hierarchy
+.page__title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .archive__item {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .archive__item-title {
+    font-size: 1.2rem;
+  }
+  
+  .archive__item-meta {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .page__title {
+    font-size: 2rem;
+  }
+}
